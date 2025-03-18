@@ -1,31 +1,4 @@
-[tool.poetry]
-name = "py2puml"
-version = "0.9.1"
-description = "Generate PlantUML class diagrams to document your Python application."
-keywords = ["class diagram", "PlantUML", "documentation", "inspection", "AST"]
-readme = "README.md"
-repository = "https://github.com/lucsorel/py2puml"
-authors = ["Luc Sorel-Giffo"]
-maintainers = ["Luc Sorel-Giffo"]
-license = "MIT"
-include = [
-    "CONTRIBUTING.md"
-]
-
-[tool.poetry.scripts]
-py2puml = 'py2puml.cli:run'
-
-[tool.poetry.dependencies]
-python = "^3.8"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.2.1"
-pytest-cov = "^4.0.0"
-
-[tool.poetry.group.lint.dependencies]
-pre-commit = "^3.3.3"
-
-[tool.pytest.ini_options]
+    [tool.pytest.ini_options]
 console_output_style = "count"
 
 [tool.isort]
@@ -80,6 +53,58 @@ quote-style = "single"
 [tool.ruff.lint.isort]
 forced-separate = ["tests"]
 
+
+[dev-dependencies]
+dev = [
+    "pytest<8.0.0,>=7.2.1",
+    "pytest-cov<5.0.0,>=4.0.0",
+]
+lint = [
+    "pre-commit<4.0.0,>=3.3.3",
+]
+
+[tool.pdm.build]
+includes = [
+    "CONTRIBUTING.md",
+]
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+authors = [
+    {name = "Luc Sorel-Giffo"},
+]
+maintainers = [
+    {name = "Luc Sorel-Giffo"},
+]
+license = {text = "MIT"}
+requires-python = "<4.0,>=3.8"
+dependencies = []
+name = "py2puml"
+version = "0.9.1"
+description = "Generate PlantUML class diagrams to document your Python application."
+keywords = [
+    "class diagram",
+    "PlantUML",
+    "documentation",
+    "inspection",
+    "AST",
+]
+readme = "README.md"
+
+[project.urls]
+repository = "https://github.com/lucsorel/py2puml"
+
+[project.scripts]
+py2puml = "py2puml.cli:run"
+
+[dependency-groups]
+dev = [
+    "pytest<8.0.0,>=7.2.1",
+    "pytest-cov<5.0.0,>=4.0.0",
+]
+lint = [
+    "pre-commit<4.0.0,>=3.3.3",
+]
